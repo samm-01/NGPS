@@ -5,7 +5,7 @@ import gallery1 from "../assets/images/background.jpg";
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
-        // email: '',
+        email: '',
         phone_number: '',
         reason_for_contact: '',
         message: '',
@@ -31,7 +31,7 @@ const Contact = () => {
                 // Reset form fields
                 setFormData({
                     name: '',
-                    // email: '',
+                    email: '',
                     phone_number: '',
                     reason_for_contact: '',
                     message: '',
@@ -82,7 +82,7 @@ const Contact = () => {
                             </div>
 
                             {/* Email */}
-                            {/* <div>
+                            <div>
                                 <label className="block text-md font-semibold text-gray-700" htmlFor="email">
                                     Email
                                 </label>
@@ -96,7 +96,7 @@ const Contact = () => {
                                     className="w-full p-2 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
                                     placeholder="Enter your email address"
                                 />
-                            </div> */}
+                            </div>
 
                             {/* Phone Number */}
                             <div>
