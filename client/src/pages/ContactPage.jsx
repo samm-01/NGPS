@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import gallery1 from "../assets/images/background.jpg"
+import axios from "axios";
+import gallery1 from "../assets/images/background.jpg";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
-        phone: '',
-        childAge: '',
-        reason: '',
+        // email: '',
+        phone_number: '',
+        reason_for_contact: '',
         message: '',
     });
 
@@ -20,23 +20,33 @@ const Contact = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted', formData);
-        alert('Thank you for reaching out! We will contact you soon.');
+
+        try {
+            const response = await axios.post("http://localhost:5050/api/contact", formData);
+
+            if (response.status === 200) {
+                alert('Thank you for reaching out! Your message has been sent successfully.');
+                // Reset form fields
+                setFormData({
+                    name: '',
+                    // email: '',
+                    phone_number: '',
+                    reason_for_contact: '',
+                    message: '',
+                });
+            }
+        } catch (error) {
+            console.error("Error submitting the form:", error);
+            alert('There was an error sending your message. Please try again later.');
+        }
     };
 
     return (
         <div className="bg-gradient-to-r from-yellow-50 to-pink-50 py-16 px-4">
             <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0">
                 {/* Left Section - Contact Image */}
-                {/* <div className="md:w-1/2 w-full p-6">
-                    <img
-                        src={gallery1} // Replace with your contact image
-                        alt="Contact Us"
-                        className="w-full h-auto object-cover rounded-lg shadow-lg"
-                    />
-                </div> */}
                 <div className="md:w-1/2 w-full p-6 text-center md:text-left">
                     <h2 className="text-4xl font-semibold text-blue-600 mb-4">
                         Get in Touch With Us
@@ -53,12 +63,8 @@ const Contact = () => {
                 {/* Right Section - Contact Form */}
                 <div className="md:w-1/2 w-full p-6 space-y-6">
                     <div className="bg-white p-8 rounded-xl shadow-xl transform transition-transform duration-500 hover:scale-105">
-                        {/* <h2 className="text-4xl font-bold text-center text-blue-600 mb-6">
-                            Get in Touch with Us
-                        </h2> */}
-
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Parent's Name */}
+                            {/* Name */}
                             <div>
                                 <label className="block text-md font-semibold text-gray-700" htmlFor="name">
                                     Name
@@ -75,17 +81,33 @@ const Contact = () => {
                                 />
                             </div>
 
+                            {/* Email */}
+                            {/* <div>
+                                <label className="block text-md font-semibold text-gray-700" htmlFor="email">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-2 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
+                                    placeholder="Enter your email address"
+                                />
+                            </div> */}
 
-                            {/* Parent's Phone Number */}
+                            {/* Phone Number */}
                             <div>
                                 <label className="block text-md font-semibold text-gray-700" htmlFor="phone">
                                     Phone Number
                                 </label>
                                 <input
                                     type="text"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
+                                    id="phone_number"
+                                    name="phone_number"
+                                    value={formData.phone_number}
                                     onChange={handleChange}
                                     required
                                     className="w-full p-2 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
@@ -93,17 +115,15 @@ const Contact = () => {
                                 />
                             </div>
 
-
-
                             {/* Reason for Contact */}
                             <div>
                                 <label className="block text-md font-semibold text-gray-700" htmlFor="reason">
                                     Reason for Contact
                                 </label>
                                 <select
-                                    id="reason"
-                                    name="reason"
-                                    value={formData.reason}
+                                    id="reason_for_contact"
+                                    name="reason_for_contact"
+                                    value={formData.reason_for_contact}
                                     onChange={handleChange}
                                     required
                                     className="w-full p-4 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
