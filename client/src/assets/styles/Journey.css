@@ -1,0 +1,22 @@
+.journey-page {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slick-dots li button::before {
+  font-size: 12px;
+  color: #ff5e57; /* Active Dot Color */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #ff5e57;
+}
