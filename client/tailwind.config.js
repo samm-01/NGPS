@@ -22,6 +22,10 @@ module.exports = {
           '50%': { transform: 'rotate(3deg)' },
         },
       },
+      fontFamily: {
+        heading: ['Poppins', 'sans-serif'],
+        sans: ['Nunito', 'sans-serif'],
+      },
     },
   },
   plugins: [],
