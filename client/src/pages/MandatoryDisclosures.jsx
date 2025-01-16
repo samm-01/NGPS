@@ -14,7 +14,7 @@ const MandatoryDisclosures = () => {
         <section className="bg-gray-100 py-16">
             <div className="container mx-auto px-6 sm:px-12 md:px-24">
                 <h2 className="text-3xl sm:text-4xl font-bold text-indigo-800 mb-8 text-center">
-                    Mandatory Disclosures
+                    Mandatory Disclosures Check
                 </h2>
 
                 {/* Section A: General Information */}
